@@ -1,0 +1,23 @@
+function identificarBandeira(numeroCartao) {
+  numeroCartao = numeroCartao.replace(/\D/g, ''); // Remove caracteres não numéricos
+
+  if (/^4/.test(numeroCartao)) {
+    return "Visa";
+  } else if (/^5[1-5]/.test(numeroCartao)) {
+    return "MasterCard";
+  } else if (/^3[47]/.test(numeroCartao)) {
+    return "American Express";
+  } else if (/^6(?:011|5)/.test(numeroCartao)) {
+    return "Discover";
+  } else if (/^3(?:0[0-5]|[68])/.test(numeroCartao)) {
+    return "Diners Club";
+  } else if (/^35/.test(numeroCartao)) {
+    return "JCB";
+  } else {
+    return "Bandeira desconhecida";
+  }
+}
+
+// Exemplo de uso:
+const numero = prompt("Digite o número do cartão:");
+alert("Bandeira identificada: " + identificarBandeira(numero));
